@@ -1,0 +1,63 @@
+.home {
+  @include flex_col;
+  position: relative;
+  gap: 50px 0;
+
+  .content {
+    @include flex_col;
+    align-items: center;
+    .title {
+      font: {
+        size: 100px;
+        weight: 900;
+      }
+      color: $black;
+
+      span {
+        color: $red;
+        font-style: italic;
+      }
+    }
+
+    .sub-title {
+      font: {
+        size: 30px;
+        weight: 600;
+        style: italic;
+      }
+      color: $pink;
+    }
+
+    .desc {
+      font-size: 18px;
+      color: gray;
+      width: 70%;
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+
+  .top-10 {
+    @include flex_col;
+    gap: 20px 0;
+
+    h2 {
+      position: relative;
+      font: {
+        size: 26px;
+        weight: 600;
+      }
+      color: $black;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 5px;
+        border-radius: 50px;
+        background: $pink;
+        left: 0;
+        bottom: -10px;
+      }
+    }
+  }
+}
