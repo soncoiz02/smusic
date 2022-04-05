@@ -1,0 +1,9 @@
+.app {
+  position: relative;
+  display: flex;
+
+  .main {
+    position: relative;
+    width: calc(100% - 300px);
+  }
+}

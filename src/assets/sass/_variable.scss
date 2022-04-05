@@ -1,0 +1,16 @@
+$pink: #ff569a;
+$red: #ff1070;
+$black: #585858;
+$white: #fff;
+$light-pink: #ff569a45;
+
+@mixin flex_col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

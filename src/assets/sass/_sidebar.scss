@@ -1,0 +1,39 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  @include flex_center;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+
+  .nav {
+    @include flex_col;
+    gap: 20px 0;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        padding: 15px 25px;
+        border-radius: 5px;
+        color: $red;
+        font: {
+          size: 20px;
+          weight: 600;
+        }
+
+        &:hover {
+          background: $light-pink;
+        }
+
+        &.active {
+          background: $pink;
+          color: $white;
+        }
+      }
+    }
+  }
+}

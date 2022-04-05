@@ -24,20 +24,18 @@ const navItems = [
 const SideBar = () => {
     return (
         <div className='sidebar'>
-            <div className="nav">
-                <ul>
-                    {
-                        navItems.map((item, index) =>
-                            <li key={index}>
-                                <NavLink to={item.path}>
-                                    {item.icon}
-                                    {item.name}
-                                </NavLink>
-                            </li>
-                        )
-                    }
-                </ul>
-            </div>
+            <ul className="nav">
+                {
+                    navItems.map((item, index) =>
+                        <li key={index}>
+                            <NavLink to={item.path}>
+                                {item.icon}
+                                {item.name}
+                            </NavLink>
+                        </li>
+                    )
+                }
+            </ul>
         </div>
     )
 }
