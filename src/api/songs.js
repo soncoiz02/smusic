@@ -15,3 +15,7 @@ export const getByType = (type, params) => {
 export const getBySearch = (value) => {
     return axiosClient.get(`/all-songs?q=${value}`)
 }
+
+export const getTop10 = () => {
+    return axiosClient.get('/top10')
+}

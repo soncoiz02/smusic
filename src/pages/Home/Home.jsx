@@ -1,6 +1,15 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { getTop10 } from '../../api/songs'
+import ListSong from '../../components/ListSong/ListSong'
 const Home = () => {
+    const [top10, setTop10] = useState([])
+    useEffect(() => {
+        handleGetTopSong()
+    }, [])
+    const handleGetTopSong = async () => {
+        const data = await getTop10()
+        if (data) setTop10(data)
+    }
     return (
         <div className='home'>
             <div className="content">
@@ -10,6 +19,7 @@ const Home = () => {
             </div>
             <div className="top-10">
                 <h2>Top 10 Popular Songs</h2>
+                <ListSong songs={top10} />
             </div>
         </div>
     )
