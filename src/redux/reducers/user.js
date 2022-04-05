@@ -1,6 +1,6 @@
 const initialState = {
     infor: {},
-    listLiked: []
+    isLogin: false
 }
 
 const userReducers = (state = initialState, action) => {
@@ -10,6 +10,11 @@ const userReducers = (state = initialState, action) => {
             return {
                 ...state,
                 infor: userInfor
+            }
+        case "SET_LOGIN":
+            return {
+                ...state,
+                isLogin: !state.isLogin
             }
         default: return state
     }

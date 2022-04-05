@@ -7,6 +7,8 @@
   @include flex_center;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  background: white;
+  z-index: 99;
 
   .nav {
     @include flex_col;
