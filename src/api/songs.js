@@ -9,7 +9,7 @@ export const getOne = (id) => {
 }
 
 export const getByType = (type, params) => {
-    return axiosClient.get(`/${type}?${params}`)
+    return axiosClient.get(`/all-songs?type=${type}&${params}`)
 }
 
 export const getBySearch = (value) => {

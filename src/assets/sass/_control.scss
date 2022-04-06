@@ -1,0 +1,79 @@
+.control {
+  position: relative;
+  @include flex_col;
+  width: 100%;
+  align-items: center;
+  gap: 10px 0;
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 30px;
+    width: 100%;
+
+    .btn {
+      position: relative;
+      cursor: pointer;
+
+      svg {
+        color: $red;
+        font-size: 20px;
+      }
+
+      &.loop {
+        display: flex;
+        align-items: center;
+        svg {
+          color: gray;
+        }
+        &.active {
+          svg {
+            color: $red;
+          }
+        }
+      }
+
+      &.handle-play {
+        display: flex;
+        align-items: center;
+        gap: 0 15px;
+        svg {
+          font-size: 30px;
+        }
+
+        .next,
+        .prev,
+        .play {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      &.volume {
+        @include flex_col;
+        align-items: center;
+        .setting {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          padding: 5px;
+          transform: rotate(-90deg);
+          top: -80px;
+          background: $pink;
+          border-radius: 50px;
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.3s;
+          &.active {
+            opacity: 1;
+            visibility: visible;
+          }
+          input {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
-const Pagination = ({ listSongLength, setFilter, filter }) => {
+const Pagination = ({ listSong, setFilter, filter }) => {
     const [listPageNum, setListPageNum] = useState([])
     useEffect(() => {
+        const listSongLength = listSong.length
         if (listSongLength > 0) {
             let listNum = []
-            for (let i = 0; i < Math.floor(listSongLength / 20); i++) {
+            for (let i = 0; i < Math.ceil(listSongLength / 20); i++) {
                 listNum.push(i + 1)
             }
             setListPageNum(listNum)
         }
-    }, [filter])
+    }, [listSong])
     return (
         <div className='pagination'>
             {

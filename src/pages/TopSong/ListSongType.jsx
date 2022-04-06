@@ -60,7 +60,7 @@ const ListSongType = () => {
                     }
                 </div>
             </div>
-            <Pagination listSongLength={listAllSong.length} setFilter={setFilter} filter={filter} />
+            <Pagination listSong={listAllSong} setFilter={setFilter} filter={filter} />
         </div>
     )
 }

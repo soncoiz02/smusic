@@ -1,0 +1,72 @@
+.play-bar {
+  width: 100%;
+  padding: 15px 30px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  background: white;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .detail {
+    width: 200px;
+    .name {
+      font: {
+        size: 20px;
+        weight: 600;
+      }
+      color: $red;
+    }
+    .singer {
+      font: {
+        size: 16px;
+        style: italic;
+      }
+      color: gray;
+    }
+  }
+
+  .control-bar {
+    position: relative;
+    width: calc(100% - 300px);
+  }
+
+  @include img_style(50px, 50%);
+  .notes {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    svg {
+      font-size: 18px;
+      color: $pink;
+      animation: goUp 1s linear infinite alternate-reverse;
+      &:nth-child(1) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+    }
+  }
+  @keyframes goUp {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+
+    90% {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+}
