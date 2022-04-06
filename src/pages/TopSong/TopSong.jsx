@@ -41,12 +41,12 @@ export const topSong = [
             },
             {
                 name: "Top 100 US/UK Rap Songs",
-                type: "vn-rap",
+                type: "us-rap",
                 img: rapUs
             },
             {
                 name: "Top 100 US/UK EDM Songs",
-                type: "vn-edm",
+                type: "us-edm",
                 img: edmUs
             },
         ]

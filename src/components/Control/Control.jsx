@@ -3,9 +3,14 @@ import { ImLoop, ImVolumeMedium } from 'react-icons/im'
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs'
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi'
 import ProgressBar from './ProgressBar'
+import { getOne } from '../../api/songs'
+import { setDetailSong } from '../../redux/action/song'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Control = ({ audio }) => {
     const audioRef = useRef(null)
+    const dispatch = useDispatch()
+    const isPlayingSong = useSelector(state => state.songs.detail)
 
     const [isPlay, setIsPlay] = useState(true)
     const [activeVolume, setActiveVolume] = useState(false)
@@ -16,6 +21,11 @@ const Control = ({ audio }) => {
     const [currentTime, setCurrentTime] = useState(0)
     const [progressValue, setProgressValue] = useState(0)
     const [volumeVal, setVolumeVal] = useState(100)
+
+    const getDetailSong = async (id) => {
+        const data = await getOne(id)
+        if (data) dispatch(setDetailSong(data))
+    }
 
     const getPercent = (e) => {
         const seekTime = audioRef.current.duration / 100 * e.target.value
@@ -34,10 +44,9 @@ const Control = ({ audio }) => {
         setPercent(percent)
         setProgressValue(percent)
         setCurrentTime(time.toFixed(2))
-        // if (time >= e.currentTarget.duration) {
-        //     const newSongIndex = listSongs.indexOf(songDetail) + 1
-        //     updateSongDetail(newSongIndex)
-        // }
+        if (time >= e.currentTarget.duration) {
+            getDetailSong(isPlayingSong.id + 1)
+        }
     }
 
     const handleChangeVolume = (e) => {
@@ -53,6 +62,14 @@ const Control = ({ audio }) => {
     const handleLoop = () => {
         isLoop ? audioRef.current.loop = false : audioRef.current.loop = true
         setIsLoop(!isLoop)
+    }
+
+    const handlePlayNextSong = () => {
+        getDetailSong(isPlayingSong.id + 1)
+    }
+
+    const handlePlayPrevSong = () => {
+        getDetailSong(isPlayingSong.id - 1)
     }
 
     return (
@@ -71,7 +88,7 @@ const Control = ({ audio }) => {
                     <ImLoop />
                 </div>
                 <div className="btn handle-play">
-                    <div className="prev">
+                    <div className="prev" onClick={handlePlayPrevSong}>
                         <GiPreviousButton />
                     </div>
 
@@ -83,7 +100,7 @@ const Control = ({ audio }) => {
                                 <BsFillPlayFill />
                         }
                     </div>
-                    <div className="next">
+                    <div className="next" onClick={handlePlayNextSong}>
                         <GiNextButton />
                     </div>
                 </div>

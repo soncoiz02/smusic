@@ -12,6 +12,11 @@
       background: $light-pink;
     }
     @include img_style(100px, 5px);
+
+    &.active {
+      background: $light-pink;
+    }
+
     .main-content {
       display: flex;
       justify-content: space-between;

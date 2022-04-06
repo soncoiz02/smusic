@@ -1,11 +1,16 @@
 import React from 'react'
-import { BsFillPlayFill, BsHeart, BsHeartFill, BsFillPauseFill } from 'react-icons/bs'
-import { useDispatch } from 'react-redux'
+import { BsFillPlayFill, BsHeart, BsHeartFill, BsPauseFill } from 'react-icons/bs'
+import { useDispatch, useSelector } from 'react-redux'
 import { getOne } from '../../api/songs'
 import { setDetailSong } from '../../redux/action/song'
 
 const ListSong = ({ songs }) => {
+    const detailSong = useSelector(state => state.songs.detail)
     const dispatch = useDispatch()
+
+    const checkIsPlaying = (id) => {
+        return detailSong.id === id
+    }
 
     const handlePlaySong = async (id) => {
         const data = await getOne(id)
@@ -16,7 +21,7 @@ const ListSong = ({ songs }) => {
         <div className='list-songs'>
             {songs &&
                 songs.map(song =>
-                    <div className="song" key={song.id}>
+                    <div className={`song ${checkIsPlaying(song.id) ? 'active' : ''}`} key={song.id}>
                         <div className="img">
                             <img src={song.avatar} alt="" />
                         </div>
@@ -30,7 +35,12 @@ const ListSong = ({ songs }) => {
                                     <BsHeart />
                                 </div>
                                 <div className="btn play" onClick={() => handlePlaySong(song.id)}>
-                                    <BsFillPlayFill />
+                                    {
+                                        checkIsPlaying(song.id) ?
+                                            <BsPauseFill /> :
+                                            <BsFillPlayFill />
+                                    }
+
                                 </div>
                             </div>
                         </div>
