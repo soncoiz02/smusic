@@ -2,20 +2,20 @@ import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import app from './config'
 
 const db = getFirestore(app)
-const userRef = doc(db, 'users')
 
-export const handleAddUser = async (infor) => {
+export const handleAddUser = async (data) => {
+    const userRef = doc(db, 'users', data.uid)
     try {
-        await setDoc(userRef, infor)
+        await setDoc(userRef, data)
     } catch (error) {
         console.log('Fail to add user')
     }
 }
 
 export const getUser = async (uid) => {
-    const ref = doc(db, 'users', uid)
+    const userRef = doc(db, 'users', uid)
     try {
-        const docSnap = await getDoc(ref)
+        const docSnap = await getDoc(userRef)
         if (docSnap.exists()) return docSnap.data()
     } catch (error) {
         console.log('Fail to get user')

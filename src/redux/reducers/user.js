@@ -12,9 +12,10 @@ const userReducers = (state = initialState, action) => {
                 infor: userInfor
             }
         case "SET_LOGIN":
+            const isLogin = action.payload
             return {
                 ...state,
-                isLogin: !state.isLogin
+                isLogin: isLogin
             }
         default: return state
     }

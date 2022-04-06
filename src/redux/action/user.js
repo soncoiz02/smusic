@@ -4,3 +4,10 @@ export const setUserInfor = (infor) => {
         payload: infor
     }
 }
+
+export const setIsLogin = (isLogin) => {
+    return {
+        type: "SET_LOGIN",
+        payload: isLogin
+    }
+}
