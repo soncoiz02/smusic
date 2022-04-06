@@ -20,9 +20,9 @@ const Router = () => {
                 </Route>
                 <Route path='liked' element={<LikedSong />} />
                 <Route path='search' element={<SearchPage />} />
-                <Route path='login' element={<Login />} />
                 <Route path='*' element={<NotFound />} />
             </Route>
+            <Route path='login' element={<Login />} />
         </Routes>
     )
 }

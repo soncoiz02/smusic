@@ -27,6 +27,7 @@ body {
   position: relative;
   max-width: 1200px;
   padding: 30px;
+  min-height: calc(100vh - 170px);
 }
 
 @import "./variable";

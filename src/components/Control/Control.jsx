@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ImLoop, ImVolumeMedium } from 'react-icons/im'
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs'
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi'
@@ -11,6 +11,7 @@ const Control = ({ audio }) => {
     const audioRef = useRef(null)
     const dispatch = useDispatch()
     const isPlayingSong = useSelector(state => state.songs.detail)
+
 
     const [isPlay, setIsPlay] = useState(true)
     const [activeVolume, setActiveVolume] = useState(false)
