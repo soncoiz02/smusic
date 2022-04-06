@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { ImLoop, ImVolumeMedium } from 'react-icons/im'
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs'
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi'
+import ProgressBar from './ProgressBar'
 
 const Control = ({ audio }) => {
     const audioRef = useRef(null)
@@ -15,6 +16,12 @@ const Control = ({ audio }) => {
     const [currentTime, setCurrentTime] = useState(0)
     const [progressValue, setProgressValue] = useState(0)
     const [volumeVal, setVolumeVal] = useState(100)
+
+    const getPercent = (e) => {
+        const seekTime = audioRef.current.duration / 100 * e.target.value
+        audioRef.current.currentTime = seekTime
+        setPercent(e.target.value)
+    }
 
     const loadedData = (e) => {
         const duration = e.currentTarget.duration.toFixed(2)
@@ -94,9 +101,13 @@ const Control = ({ audio }) => {
                     <ImVolumeMedium onClick={() => setActiveVolume(!activeVolume)} />
                 </div>
             </div>
-            <div className="progress-bar">
-                <input type="range" />
-            </div>
+            <ProgressBar
+                onChange={getPercent}
+                percent={percent}
+                value={progressValue}
+                duration={duration}
+                currentTime={currentTime}
+            />
         </div>
     )
 }

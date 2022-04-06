@@ -76,4 +76,85 @@
       }
     }
   }
+
+  .progress-bar {
+    display: flex;
+    gap: 0 30px;
+    width: 100%;
+
+    .timer {
+      font-size: 14px;
+      color: $red;
+      font-weight: 700;
+      width: 80px;
+      text-align: center;
+    }
+
+    &-container {
+      position: relative;
+      width: calc(100% - 220px);
+
+      &::before {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.1);
+        width: 99%;
+        height: calc(5px - 1px);
+        display: block;
+        position: absolute;
+        border-radius: 10px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+
+      .range {
+        -webkit-appearance: none;
+        background-color: rgba(240, 9, 9, 0.397);
+        height: 10px;
+        width: 100%;
+        cursor: pointer;
+        opacity: 0;
+        margin: 0 auto;
+
+        &::-webkit-slider-thumb {
+          width: 20px;
+          height: 20px;
+
+          background: #350f2d;
+          border: 1px solid #000000;
+          border-radius: 50%;
+          cursor: pointer;
+          -webkit-appearance: none;
+        }
+      }
+
+      .thumb {
+        width: 20px;
+        height: 20px;
+        box-shadow: 0px 0px 5px $pink;
+        z-index: 3;
+        background: rgb(255, 255, 255);
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        pointer-events: none; /* Remove pointer events on thumb so user can click on the actual thumb beaneath it!  */
+        user-select: none; /*  Prevent Accidentally highlighting the number while sliding the cursor  */
+      }
+    }
+    &-cover {
+      background: linear-gradient(to right, white, $red);
+      width: 0%;
+      height: 5px;
+      display: block;
+      position: absolute;
+      border-radius: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
 }
