@@ -1,22 +1,26 @@
 .song-type {
-  display: flex;
-  justify-content: space-between;
-  gap: 0 50px;
-  .type-song {
-    @include flex_col;
-    align-items: center;
-    gap: 10px 0;
-    @include img_style(300px, 10px);
-    .name {
-      font: {
-        size: 20px;
-        weight: 600;
+  @include flex_col;
+  gap: 30px 0;
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 50px;
+    .type-song {
+      @include flex_col;
+      align-items: center;
+      gap: 10px 0;
+      @include img_style(300px, 10px);
+      .name {
+        font: {
+          size: 20px;
+          weight: 600;
+        }
+        color: $black;
       }
-      color: $black;
     }
-  }
-  .list-song-type {
-    position: relative;
-    width: calc(100% - 400px);
+    .list-song-type {
+      position: relative;
+      width: calc(100% - 400px);
+    }
   }
 }

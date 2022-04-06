@@ -4,11 +4,13 @@ import { getByType } from '../../api/songs'
 import { topSong } from './TopSong'
 import queryString from 'query-string'
 import ListSong from '../../components/ListSong/ListSong'
+import Pagination from '../../components/Pagination/Pagination'
 
 const ListSongType = () => {
     const { type } = useParams()
     const [typeSong, setTypeSong] = useState()
-    const [listSong, setListSong] = useState()
+    const [listSong, setListSong] = useState([])
+    const [listAllSong, setListAllSong] = useState([])
     const [filter, setFilter] = useState({
         _page: 1,
         _limit: 20
@@ -17,6 +19,7 @@ const ListSongType = () => {
     useEffect(() => {
         handleSetSongType()
         handleGetListSong()
+        handleGetAllSongByType()
     }, [filter])
 
     const handleSetSongType = () => {
@@ -32,23 +35,32 @@ const ListSongType = () => {
         const data = await getByType(type, param)
         if (data) setListSong(data)
     }
+
+    const handleGetAllSongByType = async () => {
+        const data = await getByType(type, '')
+        if (data) setListAllSong(data)
+    }
+
     return (
         <div className='song-type'>
-            {
-                typeSong &&
-                <div className="type-song">
-                    <div className="img">
-                        <img src={typeSong.img} alt="" />
-                    </div>
-                    <div className="name">{typeSong.name}</div>
-                </div>
-            }
-            <div className="list-song-type">
+            <div className="main-content">
                 {
-                    listSong &&
-                    <ListSong songs={listSong} />
+                    typeSong &&
+                    <div className="type-song">
+                        <div className="img">
+                            <img src={typeSong.img} alt="" />
+                        </div>
+                        <div className="name">{typeSong.name}</div>
+                    </div>
                 }
+                <div className="list-song-type">
+                    {
+                        listSong &&
+                        <ListSong songs={listSong} />
+                    }
+                </div>
             </div>
+            <Pagination listSongLength={listAllSong.length} setFilter={setFilter} filter={filter} />
         </div>
     )
 }
