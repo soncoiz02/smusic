@@ -1,0 +1,51 @@
+.top-song {
+  position: relative;
+  @include flex_col;
+  gap: 30px 0;
+  .type {
+    @include flex_col;
+    gap: 20px;
+    .label {
+      position: relative;
+      font: {
+        size: 26px;
+        weight: 600;
+      }
+      color: $black;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 5px;
+        border-radius: 50px;
+        background: $pink;
+        left: 0;
+        bottom: -5px;
+      }
+    }
+
+    .list {
+      display: flex;
+      align-items: center;
+      gap: 20px 30px;
+      flex-wrap: wrap;
+      .item {
+        @include flex_col;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        @include img_style(300px, 5px);
+        .name {
+          font: {
+            size: 20px;
+            weight: 600;
+          }
+          color: $light-blue;
+          &:hover {
+            color: $pink;
+          }
+        }
+      }
+    }
+  }
+}
