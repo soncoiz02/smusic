@@ -10,7 +10,7 @@ import korea from '../../assets/img/korea.jpg'
 import { Link } from 'react-router-dom'
 
 
-const topSong = [
+export const topSong = [
     {
         label: "Top 100 Vietnamese",
         list: [

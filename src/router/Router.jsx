@@ -6,8 +6,8 @@ import LikedSong from '../pages/LikedSong/LikedSong'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
 import SearchPage from '../pages/SearchPage/SearchPage'
+import ListSongType from '../pages/TopSong/ListSongType'
 import TopSong from '../pages/TopSong/TopSong'
-import TopSongList from '../pages/TopSong/TopSongList'
 
 const Router = () => {
     return (
@@ -16,7 +16,7 @@ const Router = () => {
                 <Route index element={<Home />} />
                 <Route path='top-song'>
                     <Route index element={<TopSong />} />
-                    <Route path=':type' element={<TopSongList />} />
+                    <Route path=':type' element={<ListSongType />} />
                 </Route>
                 <Route path='liked' element={<LikedSong />} />
                 <Route path='search' element={<SearchPage />} />
