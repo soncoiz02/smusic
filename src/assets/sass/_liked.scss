@@ -1,0 +1,12 @@
+.liked-song {
+  position: relative;
+  @include flex_center;
+
+  h2 {
+    font: {
+      size: 50px;
+      style: italic;
+    }
+    color: $black;
+  }
+}

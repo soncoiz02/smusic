@@ -1,8 +1,10 @@
 .play-bar {
-  width: 100%;
+  width: calc(100% - 60px);
+  border-radius: 10px;
+  margin: 10px auto;
   padding: 15px 30px;
   position: sticky;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   background: white;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
