@@ -108,6 +108,7 @@ const Control = ({ audio }) => {
                 <div className="btn volume">
                     <div className={`setting ${activeVolume ? 'active' : ''}`}>
                         <input
+                            className='range'
                             type="range"
                             min={0}
                             max={100}

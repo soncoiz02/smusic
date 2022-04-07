@@ -90,7 +90,7 @@ const TopSong = () => {
                                         <div className="img">
                                             <img src={item.img} alt="" />
                                         </div>
-                                        <Link to={`/top-song/${item.type}`} className="name">{item.name}</Link>
+                                        <Link to={`/top-song/${item.type}?_page=1`} className="name">{item.name}</Link>
                                     </div>
                                 )
                             }

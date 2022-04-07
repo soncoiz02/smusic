@@ -8,8 +8,8 @@ export const getOne = (id) => {
     return axiosClient.get(`/all-songs/${id}`)
 }
 
-export const getByType = (type, params) => {
-    return axiosClient.get(`/all-songs?type=${type}&${params}`)
+export const getByType = (type, page) => {
+    return axiosClient.get(`/all-songs?type=${type}${page !== 0 ? `&_page=${page}&_limit=20` : ''}`)
 }
 
 export const getByName = (name) => {

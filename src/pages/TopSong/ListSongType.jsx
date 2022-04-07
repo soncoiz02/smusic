@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { getByType } from '../../api/songs'
 import { topSong } from './TopSong'
 import queryString from 'query-string'
@@ -11,15 +11,13 @@ import { setSongs } from '../../redux/action/song'
 
 const ListSongType = () => {
     const { type } = useParams()
+    const { search } = useLocation()
     const [typeSong, setTypeSong] = useState()
     const [listSong, setListSong] = useState([])
     const [listAllSong, setListAllSong] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [filter, setFilter] = useState({
-        _page: 1,
-        _limit: 20
-    })
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         handleSetSongType()
@@ -29,7 +27,7 @@ const ListSongType = () => {
         setTimeout(() => {
             setIsLoading(false)
         }, 2000)
-    }, [filter])
+    }, [search.slice(-1)])
 
     const handleSetSongType = () => {
         const listType = topSong.map(e => e.list)
@@ -40,8 +38,7 @@ const ListSongType = () => {
     }
 
     const handleGetListSong = async () => {
-        const param = queryString.stringify(filter)
-        const data = await getByType(type, param)
+        const data = await getByType(type, +search.slice(-1))
         if (data) {
             setListSong(data)
             dispatch(setSongs(data))
@@ -49,7 +46,7 @@ const ListSongType = () => {
     }
 
     const handleGetAllSongByType = async () => {
-        const data = await getByType(type, '')
+        const data = await getByType(type, 0)
         if (data) {
             setListAllSong(data)
         }
@@ -78,7 +75,7 @@ const ListSongType = () => {
                                 }
                             </div>
                         </div>
-                        <Pagination listSong={listAllSong} setFilter={setFilter} filter={filter} />
+                        <Pagination listSong={listAllSong} currentPage={+search.slice(-1)} setIsLoading={setIsLoading} />
                     </div>
             }
         </>

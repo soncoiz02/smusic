@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-const Pagination = ({ listSong, setFilter, filter }) => {
+const Pagination = ({ listSong, currentPage, setIsLoading }) => {
     const [listPageNum, setListPageNum] = useState([])
+    const { pathname } = useLocation()
     useEffect(() => {
         const listSongLength = listSong.length
         if (listSongLength > 0) {
@@ -17,7 +19,7 @@ const Pagination = ({ listSong, setFilter, filter }) => {
             {
                 listPageNum.length > 0 &&
                 listPageNum.map((e) =>
-                    <div className={`btn ${e === filter._page ? 'active' : ''}`} key={e} onClick={() => setFilter({ ...filter, _page: e })}>{e}</div>
+                    <Link to={`${pathname}?_page=${e}`} className={`btn ${e === currentPage ? 'active' : ''}`} key={e} onClick={() => setIsLoading(true)} >{e}</Link>
                 )
             }
         </div>
