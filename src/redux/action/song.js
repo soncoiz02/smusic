@@ -1,6 +1,6 @@
-export const setListSong = (list) => {
+export const setSongs = (list) => {
     return {
-        type: "SET_LIST",
+        type: "SET_SONGS",
         payload: list
     }
 }

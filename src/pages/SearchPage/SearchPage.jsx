@@ -1,26 +1,38 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { getByName, getBySearch, getBySinger } from '../../api/songs'
 import ListSong from '../../components/ListSong/ListSong'
+import { setSongs } from '../../redux/action/song'
 
 const SearchPage = () => {
     const { search } = useLocation()
     const [songsByName, setSongsByName] = useState([])
     const [songsBySinger, setSongsBySinger] = useState([])
+    const dispatch = useDispatch()
+
     useEffect(() => {
         const searchFilter = search.slice(3)
         getSongsByName(searchFilter)
         getSongsBySinger(searchFilter)
+        if (songsByName || songsBySinger) {
+            const listSongs = [...songsByName, ...songsBySinger]
+            dispatch(setSongs(listSongs));
+        }
     }, [search])
 
     const getSongsByName = async (name) => {
         const data = await getByName(name)
-        setSongsByName(data)
+        if (data) {
+            setSongsByName(data)
+        }
     }
 
     const getSongsBySinger = async (singer) => {
         const data = await getBySinger(singer)
-        setSongsBySinger(data)
+        if (data) {
+            setSongsBySinger(data)
+        }
     }
 
     return (

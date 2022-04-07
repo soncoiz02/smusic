@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { getTop10 } from '../../api/songs'
 import ListSong from '../../components/ListSong/ListSong'
+import { setSongs } from '../../redux/action/song'
 const Home = () => {
     const [top10, setTop10] = useState([])
+    const dispatch = useDispatch()
     useEffect(() => {
         handleGetTopSong()
     }, [])
     const handleGetTopSong = async () => {
         const data = await getTop10()
-        if (data) setTop10(data)
+        if (data) {
+            setTop10(data)
+            dispatch(setSongs(data))
+        }
     }
     return (
         <div className='home'>

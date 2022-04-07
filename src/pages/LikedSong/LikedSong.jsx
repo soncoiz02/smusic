@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ListSong from '../../components/ListSong/ListSong'
+import { setSongs } from '../../redux/action/song'
 
 const LikedSong = () => {
     const isLogin = useSelector(state => state.users.isLogin)
     const userInfor = useSelector(state => state.users.infor)
     const [likedSongs, setLikedSongs] = useState([])
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (isLogin) {
             const likedSongs = userInfor.likedSongs
             setLikedSongs(likedSongs)
+            dispatch(setSongs(likedSongs))
         }
     }, [])
 

@@ -11,7 +11,7 @@ const Control = ({ audio }) => {
     const audioRef = useRef(null)
     const dispatch = useDispatch()
     const isPlayingSong = useSelector(state => state.songs.detail)
-
+    const listSongs = useSelector(state => state.songs.songs)
 
     const [isPlay, setIsPlay] = useState(true)
     const [activeVolume, setActiveVolume] = useState(false)
@@ -23,9 +23,9 @@ const Control = ({ audio }) => {
     const [progressValue, setProgressValue] = useState(0)
     const [volumeVal, setVolumeVal] = useState(100)
 
-    const getDetailSong = async (id) => {
-        const data = await getOne(id)
-        if (data) dispatch(setDetailSong(data))
+    const getDetailSong = async (index) => {
+        const data = listSongs[index]
+        if (data) dispatch(setDetailSong({ ...data, index: index }))
     }
 
     const getPercent = (e) => {
@@ -46,7 +46,7 @@ const Control = ({ audio }) => {
         setProgressValue(percent)
         setCurrentTime(time.toFixed(2))
         if (time >= e.currentTarget.duration) {
-            getDetailSong(isPlayingSong.id + 1)
+            getDetailSong(isPlayingSong.index + 1)
         }
     }
 
@@ -66,11 +66,11 @@ const Control = ({ audio }) => {
     }
 
     const handlePlayNextSong = () => {
-        getDetailSong(isPlayingSong.id + 1)
+        getDetailSong(isPlayingSong.index + 1)
     }
 
     const handlePlayPrevSong = () => {
-        getDetailSong(isPlayingSong.id - 1)
+        getDetailSong(isPlayingSong.index - 1)
     }
 
     return (

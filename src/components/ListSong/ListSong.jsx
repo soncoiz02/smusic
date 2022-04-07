@@ -19,9 +19,9 @@ const ListSong = ({ songs }) => {
         return detailSong.id === id
     }
 
-    const handlePlaySong = (id) => {
+    const handlePlaySong = (id, index) => {
         const data = songs.find(song => song.id === id)
-        if (data) dispatch(setDetailSong(data))
+        if (data) dispatch(setDetailSong({ ...data, index }))
     }
 
     const handleLikeSong = async (id) => {
@@ -30,7 +30,6 @@ const ListSong = ({ songs }) => {
             let userLikedSongs = userInfor.likedSongs
             if (userLikedSongs.find(song => song.id === id)) {
                 userLikedSongs = userLikedSongs.filter(song => song.id !== id)
-                console.log(userLikedSongs);
             }
             else {
                 userLikedSongs.push(data)
@@ -56,7 +55,7 @@ const ListSong = ({ songs }) => {
                 </div>
             }
             {songs &&
-                songs.map(song =>
+                songs.map((song, index) =>
                     <div className={`song ${checkIsPlaying(song.id) ? 'active' : ''}`} key={song.id}>
                         <div className="img">
                             <img src={song.avatar} alt="" />
@@ -74,7 +73,7 @@ const ListSong = ({ songs }) => {
                                             <BsHeart />
                                     }
                                 </div>
-                                <div className="btn play" onClick={() => handlePlaySong(song.id)}>
+                                <div className="btn play" onClick={() => handlePlaySong(song.id, index)}>
                                     {
                                         checkIsPlaying(song.id) ?
                                             <BsPauseFill /> :

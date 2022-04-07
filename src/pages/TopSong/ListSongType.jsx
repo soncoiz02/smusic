@@ -5,6 +5,8 @@ import { topSong } from './TopSong'
 import queryString from 'query-string'
 import ListSong from '../../components/ListSong/ListSong'
 import Pagination from '../../components/Pagination/Pagination'
+import { useDispatch } from 'react-redux'
+import { setSongs } from '../../redux/action/song'
 
 const ListSongType = () => {
     const { type } = useParams()
@@ -15,6 +17,7 @@ const ListSongType = () => {
         _page: 1,
         _limit: 20
     })
+    const dispatch = useDispatch()
 
     useEffect(() => {
         handleSetSongType()
@@ -33,7 +36,10 @@ const ListSongType = () => {
     const handleGetListSong = async () => {
         const param = queryString.stringify(filter)
         const data = await getByType(type, param)
-        if (data) setListSong(data)
+        if (data) {
+            setListSong(data)
+            dispatch(setSongs(data))
+        }
     }
 
     const handleGetAllSongByType = async () => {
