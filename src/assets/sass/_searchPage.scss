@@ -1,0 +1,27 @@
+.search-page {
+  @include flex_col;
+  gap: 20px 0;
+
+  h2 {
+    font: {
+      size: 30px;
+    }
+    color: $black;
+
+    span {
+      color: $red;
+    }
+  }
+  .cover {
+    @include flex_col;
+    gap: 20px 0;
+    .title {
+      font: {
+        size: 24px;
+        weight: 600;
+        style: italic;
+      }
+      color: $red;
+    }
+  }
+}

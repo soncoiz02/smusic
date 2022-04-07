@@ -16,6 +16,16 @@
       span {
         color: $red;
         font-style: italic;
+        animation: shake 1s linear infinite;
+      }
+
+      @keyframes shake {
+        0% {
+          font-style: normal;
+        }
+        100% {
+          font-style: italic;
+        }
       }
     }
 
