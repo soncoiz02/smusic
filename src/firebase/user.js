@@ -1,4 +1,4 @@
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 import app from './config'
 
 const db = getFirestore(app)
@@ -20,4 +20,9 @@ export const getUser = async (uid) => {
     } catch (error) {
         console.log('Fail to get user')
     }
+}
+
+export const updateLikedSongs = async (data, uid) => {
+    const userRef = doc(db, 'users', uid)
+    await updateDoc(userRef, { likedSongs: data })
 }

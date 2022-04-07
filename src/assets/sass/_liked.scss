@@ -9,4 +9,11 @@
     }
     color: $black;
   }
+
+  &-content {
+    position: relative;
+    width: 100%;
+    @include flex_col;
+    gap: 30px 0;
+  }
 }

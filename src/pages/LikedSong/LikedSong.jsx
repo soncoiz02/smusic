@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import ListSong from '../../components/ListSong/ListSong'
 
 const LikedSong = () => {
     const isLogin = useSelector(state => state.users.isLogin)
@@ -22,6 +23,7 @@ const LikedSong = () => {
                             likedSongs.length > 0 ?
                                 <>
                                     <h2>Your liked songs</h2>
+                                    <ListSong songs={likedSongs} />
                                 </>
                                 : <h2>Looks like you don't like any of the songs</h2>
                         }
