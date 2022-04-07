@@ -15,8 +15,8 @@ const ListSong = ({ songs }) => {
 
     const [displayPopup, setDisplayPopup] = useState(false)
 
-    const checkIsPlaying = (id) => {
-        return detailSong.id === id
+    const checkIsPlaying = (name) => {
+        return detailSong.name === name
     }
 
     const handlePlaySong = (id, index) => {
@@ -56,7 +56,7 @@ const ListSong = ({ songs }) => {
             }
             {songs &&
                 songs.map((song, index) =>
-                    <div className={`song ${checkIsPlaying(song.id) ? 'active' : ''}`} key={song.id}>
+                    <div className={`song ${checkIsPlaying(song.name) ? 'active' : ''}`} key={song.id}>
                         <div className="img">
                             <img src={song.avatar} alt="" />
                         </div>
@@ -75,7 +75,7 @@ const ListSong = ({ songs }) => {
                                 </div>
                                 <div className="btn play" onClick={() => handlePlaySong(song.id, index)}>
                                     {
-                                        checkIsPlaying(song.id) ?
+                                        checkIsPlaying(song.name) ?
                                             <BsPauseFill /> :
                                             <BsFillPlayFill />
                                     }
