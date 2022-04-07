@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import china from '../../assets/img/china.jpg'
 import edmUs from '../../assets/img/edm-us.jpg'
 import rapUs from '../../assets/img/rap-us.jpg'
@@ -74,6 +74,9 @@ export const topSong = [
 ]
 
 const TopSong = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='top-song'>
             {
