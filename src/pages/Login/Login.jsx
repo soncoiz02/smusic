@@ -1,11 +1,13 @@
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
 import React, { useEffect } from 'react'
-import app from '../../firebase/config'
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth'
+import { FaBackspace } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
-import { getUser, handleAddUser } from '../../firebase/user'
-import { doc } from 'firebase/firestore'
-import { setIsLogin, setUserInfor } from '../../redux/action/user'
 import { useNavigate } from 'react-router-dom'
+import app from '../../firebase/config'
+import { getUser, handleAddUser } from '../../firebase/user'
+import { setIsLogin, setUserInfor } from '../../redux/action/user'
+
+
 const auth = getAuth(app)
 
 const ggProvider = new GoogleAuthProvider()
@@ -64,6 +66,10 @@ const Login = () => {
     return (
         <div className='login'>
             <div className="cover">
+                <div className="btn-back" onClick={() => { navigate(-1) }}>
+                    <FaBackspace />
+                    Back
+                </div>
                 <h2>Choose your login method</h2>
                 <div className='method'>
                     <div className="btn gg" onClick={handleLoginWithGg}>

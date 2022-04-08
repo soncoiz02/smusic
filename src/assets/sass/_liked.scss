@@ -17,3 +17,11 @@
     gap: 30px 0;
   }
 }
+
+@media (max-width: 767px) {
+  .liked-song {
+    h2 {
+      font-size: 30px;
+    }
+  }
+}
