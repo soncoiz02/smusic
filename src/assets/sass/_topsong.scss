@@ -59,12 +59,13 @@
       }
 
       .list {
-        gap: 20px 10px;
+        gap: 20px;
         .item {
-          @include img_style(250px, 5px);
+          @include img_style(150px, 5px);
 
           .name {
             font-size: 16px;
+            width: 150px;
           }
         }
       }

@@ -171,6 +171,7 @@
 
   .progress-bar {
     display: flex;
+    align-items: center;
     gap: 0 30px;
     width: 100%;
 
@@ -247,6 +248,56 @@
       z-index: 1;
       user-select: none;
       pointer-events: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .control {
+    .panel {
+      justify-content: space-between;
+      .btn {
+        svg {
+          font-size: 16px;
+        }
+
+        &.handle-play {
+          gap: 0 10px;
+          .prev,
+          .next,
+          .play {
+            svg {
+              font-size: 24px;
+            }
+          }
+        }
+
+        &.volume {
+          .setting {
+            input {
+              width: 80px;
+            }
+          }
+        }
+      }
+    }
+    .progress-bar {
+      justify-content: space-between;
+      gap: 0;
+      .timer {
+        width: 50px;
+        font-size: 12px;
+        &:nth-child(1) {
+          text-align: left;
+        }
+        &:nth-child(2) {
+          text-align: right;
+        }
+      }
+
+      &-container {
+        width: calc(100% - 100px);
+      }
     }
   }
 }
