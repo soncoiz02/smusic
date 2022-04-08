@@ -1,0 +1,21 @@
+[debug] [2022-04-08T20:53:32.604Z] ----------------------------------------------------------------------
+[debug] [2022-04-08T20:53:32.606Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-04-08T20:53:32.606Z] CLI Version:   10.6.0
+[debug] [2022-04-08T20:53:32.606Z] Platform:      win32
+[debug] [2022-04-08T20:53:32.606Z] Node Version:  v16.14.0
+[debug] [2022-04-08T20:53:32.607Z] Time:          Sat Apr 09 2022 03:53:32 GMT+0700 (Indochina Time)
+[debug] [2022-04-08T20:53:32.607Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-08T20:53:32.668Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-08T20:53:32.668Z] > authorizing via signed-in user (soncoiz3107@gmail.com)
+[debug] [2022-04-08T20:53:32.668Z] [iam] checking project smusic-2d0fa for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-04-08T20:53:32.671Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/smusic-2d0fa:testIamPermissions [none]
+[debug] [2022-04-08T20:53:32.671Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/smusic-2d0fa:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-04-08T20:53:34.774Z] [iam] error while checking permissions, command may fail: FirebaseError: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/smusic-2d0fa:testIamPermissions
+[debug] [2022-04-08T20:53:34.775Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/smusic-2d0fa [none]
+[debug] [2022-04-08T20:53:55.782Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/smusic-2d0fa
+[debug] [2022-04-08T20:53:57.833Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/smusic-2d0fa
+    at RetryOperation._fn (C:\Users\ADMIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:240:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project smusic-2d0fa. Please make sure the project exists and your account has permission to access it.
