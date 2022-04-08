@@ -49,3 +49,25 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .top-song {
+    gap: 20px 0;
+    .type {
+      .label {
+        font-size: 20px;
+      }
+
+      .list {
+        gap: 20px 10px;
+        .item {
+          @include img_style(250px, 5px);
+
+          .name {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

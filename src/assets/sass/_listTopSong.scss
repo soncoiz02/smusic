@@ -1,11 +1,11 @@
 .song-type {
   @include flex_col;
   gap: 30px 0;
-  .main-content {
+  .song-type-content {
     display: flex;
     justify-content: space-between;
     gap: 0 50px;
-    .type-song {
+    .desc {
       @include flex_col;
       align-items: center;
       gap: 10px 0;
@@ -21,6 +21,28 @@
     .list-song-type {
       position: relative;
       width: calc(100% - 400px);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .song-type {
+    gap: 15px 0;
+    .song-type-content {
+      flex-direction: column;
+      gap: 30px 0;
+
+      .desc {
+        @include img_style(250px, 10px);
+
+        .name {
+          font-size: 16px;
+        }
+      }
+
+      .list-song-type {
+        width: 100%;
+      }
     }
   }
 }

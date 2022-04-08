@@ -58,10 +58,10 @@ const ListSongType = () => {
                 isLoading ?
                     <Loading /> :
                     <div className='song-type'>
-                        <div className="main-content">
+                        <div className="song-type-content">
                             {
                                 typeSong &&
-                                <div className="type-song">
+                                <div className="desc">
                                     <div className="img">
                                         <img src={typeSong.img} alt="" />
                                     </div>
