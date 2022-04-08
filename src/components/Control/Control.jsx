@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs'
+import { GiNextButton, GiPreviousButton } from 'react-icons/gi'
 import { ImLoop, ImVolumeMedium } from 'react-icons/im'
-import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs'
-import { GiPreviousButton, GiNextButton } from 'react-icons/gi'
-import ProgressBar from './ProgressBar'
-import { getOne } from '../../api/songs'
-import { setDetailSong } from '../../redux/action/song'
 import { useDispatch, useSelector } from 'react-redux'
+import { setDetailSong } from '../../redux/action/song'
+import ProgressBar from './ProgressBar'
 
 const Control = ({ audio }) => {
     const audioRef = useRef(null)

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { getByType } from '../../api/songs'
-import { topSong } from './TopSong'
-import queryString from 'query-string'
-import ListSong from '../../components/ListSong/ListSong'
-import Pagination from '../../components/Pagination/Pagination'
-import Loading from '../../components/Loading/Loading'
 import { useDispatch } from 'react-redux'
+import { useLocation, useParams } from 'react-router-dom'
+import { getByType } from '../../api/songs'
+import ListSong from '../../components/ListSong/ListSong'
+import Loading from '../../components/Loading/Loading'
+import Pagination from '../../components/Pagination/Pagination'
 import { setSongs } from '../../redux/action/song'
+import { topSong } from './TopSong'
 
 const ListSongType = () => {
     const { type } = useParams()
