@@ -110,3 +110,35 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .list-songs {
+    .song {
+      gap: 0 10px;
+      padding: 10px;
+      @include img_style(60px, 5px);
+
+      .main-content {
+        width: calc(100% - 70px);
+        .detail {
+          .name {
+            font: {
+              size: 16px;
+              weight: 600;
+            }
+          }
+          .singer {
+            font-size: 14px;
+          }
+        }
+        .option {
+          .btn {
+            svg {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

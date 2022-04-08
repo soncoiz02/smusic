@@ -20,6 +20,7 @@ $light-blue: #45458e;
 @mixin img_style($width, $radius) {
   .img {
     width: $width;
+    height: $width;
     aspect-ratio: 1;
     border-radius: $radius;
     overflow: hidden;
