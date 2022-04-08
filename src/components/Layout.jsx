@@ -1,14 +1,15 @@
-import React from 'react'
+import { getAuth, signOut } from 'firebase/auth'
+import React, { useState } from 'react'
+import { BiLogInCircle, BiLogOutCircle } from 'react-icons/bi'
+import { BsMusicNote, BsMusicNoteBeamed } from 'react-icons/bs'
+import { FaBars } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
+import app from '../firebase/config'
+import { setIsLogin } from '../redux/action/user'
+import Control from './Control/Control'
 import SearchBox from './SearchBox/SearchBox'
 import SideBar from './SideBar/SideBar'
-import { BiLogInCircle, BiLogOutCircle } from 'react-icons/bi'
-import { BsMusicNoteBeamed, BsMusicNote } from 'react-icons/bs'
-import Control from './Control/Control'
-import { setIsLogin } from '../redux/action/user'
-import { getAuth, signOut } from 'firebase/auth'
-import app from '../firebase/config'
 const auth = getAuth(app)
 
 const Layout = () => {
@@ -17,6 +18,8 @@ const Layout = () => {
     const userInfor = useSelector(state => state.users.infor)
     const isLogin = useSelector(state => state.users.isLogin)
     const detailSong = useSelector(state => state.songs.detail)
+
+    const [activeSidebar, setActiveSideBar] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -35,29 +38,35 @@ const Layout = () => {
 
     return (
         <div className='app'>
-            <SideBar />
+            <SideBar activeSidebar={activeSidebar} setActiveSidebar={setActiveSideBar} />
             <div className="main">
                 <div className="header">
                     <SearchBox />
-                    {
-                        isLogin ?
-                            <div className="user">
-                                <div className="img">
-                                    <img src={userInfor.avt} alt="" />
-                                </div>
-                                <div className="detail">
-                                    <div className="name">{userInfor.name}</div>
-                                    <div className="btn-logout" onClick={handleLogout}>
-                                        Logout
-                                        <BiLogOutCircle />
+                    <div className="right-side">
+                        <div className="btn-bars" onClick={() => setActiveSideBar(!activeSidebar)}>
+                            <FaBars />
+                        </div>
+                        {
+                            isLogin ?
+                                <div className="user">
+                                    <div className="img">
+                                        <img src={userInfor.avt} alt="" />
+                                    </div>
+                                    <div className="detail">
+                                        <div className="name">{userInfor.name}</div>
+                                        <div className="btn-logout" onClick={handleLogout}>
+                                            Logout
+                                            <BiLogOutCircle />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            :
-                            <Link to="/login" className="btn-login">
-                                Login <BiLogInCircle />
-                            </Link>
-                    }
+                                :
+                                <Link to="/login" className="btn-login">
+                                    Login <BiLogInCircle />
+                                </Link>
+                        }
+                    </div>
+
                 </div>
                 <div className="container">
                     <Outlet />

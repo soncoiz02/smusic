@@ -6,5 +6,25 @@
     position: relative;
     width: calc(100% - 300px);
     background: #f0f7fd;
+
+    .container {
+      position: relative;
+      max-width: 1200px;
+      padding: 30px;
+      min-height: calc(100vh - 170px);
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .app {
+    .main {
+      width: 100%;
+
+      .container {
+        padding: 15px;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { FaHome } from 'react-icons/fa'
 import { BsMusicNoteList, BsBookmarkHeartFill } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
@@ -21,9 +21,21 @@ const navItems = [
     }
 ]
 
-const SideBar = () => {
+const SideBar = ({ activeSidebar, setActiveSidebar }) => {
+    const sidebarRef = useRef(null)
+    useEffect(() => {
+        const handleClickOutSide = (event) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                setActiveSidebar(false)
+            }
+        }
+        if (window.matchMedia("(max-width: 700px)").matches) {
+            document.addEventListener('mousedown', handleClickOutSide)
+        }
+    }, [])
+
     return (
-        <div className='sidebar'>
+        <div className={`sidebar ${activeSidebar ? 'active' : ''}`} ref={sidebarRef}>
             <ul className="nav">
                 {
                     navItems.map((item, index) =>

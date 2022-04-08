@@ -24,14 +24,6 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
-.container {
-  position: relative;
-  max-width: 1200px;
-  padding: 30px;
-  min-height: calc(100vh - 170px);
-  margin: 0 auto;
-}
-
 @import "./app";
 @import "./sidebar";
 @import "./home";

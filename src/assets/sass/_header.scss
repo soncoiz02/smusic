@@ -44,18 +44,34 @@
       }
     }
   }
-  .btn-login {
+
+  .right-side {
     display: flex;
     align-items: center;
     gap: 0 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background: $red;
-    color: white;
-    cursor: pointer;
-    font: {
-      size: 18px;
-      weight: 500;
+
+    .btn-bars {
+      display: none;
+      cursor: pointer;
+      svg {
+        color: $red;
+        font-size: 20px;
+      }
+    }
+
+    .btn-login {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background: $red;
+      color: white;
+      cursor: pointer;
+      font: {
+        size: 18px;
+        weight: 500;
+      }
     }
   }
 
@@ -83,6 +99,52 @@
         cursor: pointer;
         color: $red;
         font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 15px;
+    .search-box {
+      form {
+        width: 100%;
+        input {
+          width: 100%;
+          padding: 10px 15px;
+          font-size: 14px;
+        }
+
+        button {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .right-side {
+      .btn-bars {
+        display: flex;
+      }
+      .btn-login {
+        padding: 5px 15px;
+        font-size: 14px;
+        gap: 0 5px;
+      }
+      .user {
+        flex-direction: column;
+        .img {
+          display: none;
+        }
+        .detail {
+          .name {
+            font-size: 14px;
+          }
+          .btn-logout {
+            font-size: 12px;
+          }
+        }
       }
     }
   }
