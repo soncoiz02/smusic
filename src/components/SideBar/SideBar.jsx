@@ -29,7 +29,7 @@ const SideBar = ({ activeSidebar, setActiveSidebar }) => {
                 setActiveSidebar(false)
             }
         }
-        if (window.matchMedia("(max-width: 700px)").matches) {
+        if (window.matchMedia("(max-width: 768px)").matches) {
             document.addEventListener('mousedown', handleClickOutSide)
         }
     }, [])
